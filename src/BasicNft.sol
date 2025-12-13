@@ -1,6 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
+/**
+ * @title ERC721 which is NFT token with storing files on IPFS
+ * @author Khuslen Ganbat
+ * @notice For learning purpose and making a file structure for use of improvement. Learned from Cyfrin Updraft.
+ */
+
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract BasicNft is ERC721 {
@@ -15,6 +21,6 @@ contract BasicNft is ERC721 {
     function tokenURI(
         uint256 tokenId
     ) public view override returns (string memory) {
-        return ""
+        return "";
     }
 }
