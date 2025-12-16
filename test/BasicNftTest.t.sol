@@ -10,5 +10,22 @@ contract BasicNftTest is Test {
     DeployBasicNft public deployer;
     BasicNft public basicNft;
 
-    function setUp() public {}
+    function setUp() public {
+        deployer = new DeployBasicNft();
+        basicNft = deployer.run();
+    }
+
+    // Lesson: For testing string as it is an array of bytes, it can't be tested by asserting hence
+    // it is not a primitive type of variable such as bool,address,uint and bytes. To assert them,
+    // we need to make expected and actual strings matching by hashing them in Solidity.
+    function testNameIsCorrect() public view {
+        string memory expectedName = "Doggie";
+        string memory actualName = basicNft.name();
+        // string is an array of bytes.
+        // for(loop through the array) compate the elements
+        assert(
+            keccak256(abi.encodePacked(expectedName)) ==
+                keccak256(abi.encodePacked(actualName))
+        );
+    }
 }
