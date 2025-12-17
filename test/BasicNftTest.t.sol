@@ -9,6 +9,7 @@ import {BasicNft} from "../src/BasicNft.sol";
 contract BasicNftTest is Test {
     DeployBasicNft public deployer;
     BasicNft public basicNft;
+    address public USER = makeAddr("user");
 
     function setUp() public {
         deployer = new DeployBasicNft();
