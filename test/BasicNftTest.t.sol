@@ -33,7 +33,10 @@ contract BasicNftTest is Test {
 
     function testCanMintAndHaveABalance() public {
         vm.prank();
-        basicNft.mintNft();
+        basicNft.mintNft(PUG);
+
+        assert(basicNft.balanceOf(USER)==1);
+        assert(keccak256(abi.encodePacked(PUG)) == keccak256(abi.encodePacked(basicNft.tokenURI(0))));
         
     }
 }
