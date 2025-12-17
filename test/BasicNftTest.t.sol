@@ -10,6 +10,7 @@ contract BasicNftTest is Test {
     DeployBasicNft public deployer;
     BasicNft public basicNft;
     address public USER = makeAddr("user");
+    string memory public constant PUG = "https://bafybeicdlctvdhgvhnu5xqjm6tvjzaw3oyllq77deguvllb52hzu3ur76m.ipfs.dweb.link?filename=pug.png";
 
     function setUp() public {
         deployer = new DeployBasicNft();
@@ -28,5 +29,11 @@ contract BasicNftTest is Test {
             keccak256(abi.encodePacked(expectedName)) ==
                 keccak256(abi.encodePacked(actualName))
         );
+    }
+
+    function testCanMintAndHaveABalance() public {
+        vm.prank();
+        basicNft.mintNft();
+        
     }
 }
