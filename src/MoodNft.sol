@@ -36,8 +36,9 @@ contract MoodNft is ERC721 {
         string private s_sadSvg;
         string private s_happySvg;
 
-        string memory sadSvg,
-        string memory happySvg
+        // remembet that tokenURI was json file, and this time, adding ImageURI as will be different from ipfs interaction with NFT
+        string memory sadSvgImageUri,
+        string memory happySvgImageUri
     ) ERC721("Mood Nft", "MN") {
         s_tokenCounter = 0;
         s_sadSvg = sadSvg;
