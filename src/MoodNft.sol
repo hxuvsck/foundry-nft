@@ -28,18 +28,21 @@ pragma solidity ^0.8.19;
  * @notice This is for learning purpose only
  */
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import {Base64} from "@openzeppelin/contracts/utils/Base64.sol";
 
 contract MoodNft is ERC721 {
-    constructor(
-        uint256 private s_tokenCounter;
-        string private s_sadSvgImageUri;
-        string private s_happySvgImageUri;
+    uint256 private s_tokenCounter;
+    string private s_sadSvgImageUri;
+    string private s_happySvgImageUri;
 
-        // remember that tokenURI was json file, and this time, adding ImageURI as will be different from ipfs interaction with NFT
+    constructor(
         string memory sadSvgImageUri,
         string memory happySvgImageUri
-    ) ERC721("Mood Nft", "MN") {
+    )
+        // remember that tokenURI was json file, and this time, adding ImageURI as will be different from ipfs interaction with NFT
+        ERC721("Mood Nft", "MN")
+    {
         s_tokenCounter = 0;
         s_sadSvgImageUri = sadSvgImageUri;
         s_happySvgImageUri = happySvgImageUri;
@@ -50,5 +53,7 @@ contract MoodNft is ERC721 {
         s_tokenCounter++;
     }
 
-    function tokenURI(uint256 tokenId) public view override returns(string memory) {}
+    function tokenURI(
+        uint256 tokenId
+    ) public view override returns (string memory) {}
 }
