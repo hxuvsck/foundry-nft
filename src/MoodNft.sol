@@ -36,6 +36,13 @@ contract MoodNft is ERC721 {
     string private s_sadSvgImageUri;
     string private s_happySvgImageUri;
 
+    enum Mood {
+        HAPPY,
+        SAD
+    }
+
+    mapping(uint256 => Mood) private s_tokenIdToMood;
+
     constructor(
         string memory sadSvgImageUri,
         string memory happySvgImageUri
@@ -50,10 +57,42 @@ contract MoodNft is ERC721 {
 
     function mintNft() public {
         _safeMint(msg.sender, s_tokenCounter);
+        // by adding enums of Mood choice and through mapping it, we made a default mint option to happy mood
+        s_tokenIdToMood[s_tokenCounter] = Mood.HAPPY;
         s_tokenCounter++;
+    }
+
+    function _baseURI() internal pure override returns (string memory) {
+        return "data:application/json;base64,";
     }
 
     function tokenURI(
         uint256 tokenId
-    ) public view override returns (string memory) {}
+    ) public view override returns (string memory) {
+        string memory imageURI;
+        if (s_tokenIdToMood[tokenId] == Mood.HAPPY) {
+            imageURI = s_happySvgImageUri;
+        } else {
+            imageURI = s_sadSvgImageUri;
+        }
+
+        return
+            string(
+                abi.encodePacked(
+                    _baseURI(), //combined with baseURI ^
+                    Base64.encode( //encoded that byte object ^
+                        bytes( //turned it into a bytes object ^
+                            abi.encodePacked( //concatenated below string with abi.encodePacked ^
+                                '{"name": "',
+                                name(),
+                                '", "description": "An NFT that reflects the owners mood.", "attributes": [{"trait_type": "moodiness", "value": 100}], "image": "',
+                                imageURI,
+                                '"}'
+                            )
+                        )
+                    )
+                )
+            );
+        // {"name": "Mood NFT"}
+    }
 }
