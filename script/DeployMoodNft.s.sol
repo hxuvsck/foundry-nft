@@ -23,5 +23,10 @@
 pragma solidity ^0.8.18;
 
 import {Script} from "forge-std/Script.sol";
+import {MoodNft} from "../src/MoodNft.sol";
 
-contract DeployMoodNft is Script {}
+contract DeployMoodNft is Script {
+    function run() public returns (MoodNft) {
+        // We could hard code our SVG files as shown in test of MoodNftTest.t.sol, but Patrick showed more option which added function below.
+    }
+}
