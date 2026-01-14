@@ -22,4 +22,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 
-contract DeployMoodNft {}
+import {Script} from "forge-std/Script.sol";
+
+contract DeployMoodNft is Script {}
