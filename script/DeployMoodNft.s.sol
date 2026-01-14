@@ -39,6 +39,7 @@ contract DeployMoodNft is Script {
         string memory svgBase64Encoded = Base64.encode(
             bytes(string(abi.encodePacked(svg)))
         );
-        // return string(abi.encodePacked(baseURL, svgBase64Encoded)); // Could use string.concat. Which one would be more gas efficient
+        return string(abi.encodePacked(baseURL, svgBase64Encoded));
+        // Could use string.concat. Which one would be more gas efficient
     }
 }
