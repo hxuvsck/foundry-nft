@@ -32,6 +32,14 @@ contract DeployMoodNft is Script {
         // To read these SVG files into our Solidity, we can only do this in Foundry as can't actually read in scripts in SCs. To do it, we using the cheatcode named "readFile" in Foundry.
         string memory sadSvg = vm.readFile("./img/sad.svg");
         string memory happySvg = vm.readFile("./img/happy.svg");
+
+        vm.startBroadcast();
+        MoodNft moodNft = new MoodNft(
+            svgToImageURI(sadSvg),
+            svgToImageURI(happySvg)
+        );
+        vm.stopBroadcast();
+        return moodNft;
     }
 
     function svgToImageURI(
