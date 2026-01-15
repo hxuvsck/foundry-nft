@@ -28,7 +28,10 @@ import {Base64} from "@openzeppelin/contracts/utils/Base64.sol";
 
 contract DeployMoodNft is Script {
     function run() public returns (MoodNft) {
-        // We could hard code our SVG files as shown in test of MoodNftTest.t.sol, but Patrick showed more option which added function below.
+        // We could hard code our SVG files as shown in test of MoodNftTest.t.sol, but Patrick showed more option which added function below (svgToImageURI).
+        // To read these SVG files into our Solidity, we can only do this in Foundry as can't actually read in scripts in SCs. To do it, we using the cheatcode named "readFile" in Foundry.
+        string memory sadSvg = vm.readFile("./img/sad.svg");
+        string memory happySvg = vm.readFile("./img/happy.svg");
     }
 
     function svgToImageURI(

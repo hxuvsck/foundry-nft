@@ -5,7 +5,7 @@ libs = ["lib"]
 remappings = ['@openzeppelin/contracts = lib/openzeppelin-contracts/contracts']
 
 # By making ffi true, it will be accessible to everything inside DevOps scope, but by adding permissions to it as only read could be more accurate for safety for now, as within open source projects, too.
-ffi = true
+ffi = true # This is true in case of learning, outside of learning, it must stay false!
 fs_permissions = [
     { access = "read", path = "./broadcast" },
     { access = "read", path = "./images" },
