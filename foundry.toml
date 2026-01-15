@@ -8,5 +8,5 @@ remappings = ['@openzeppelin/contracts = lib/openzeppelin-contracts/contracts']
 ffi = true # This is true in case of learning, outside of learning, it must stay false!
 fs_permissions = [
     { access = "read", path = "./broadcast" },
-    { access = "read", path = "./images" },
+    { access = "read", path = "./img" },
 ]
