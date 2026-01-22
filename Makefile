@@ -42,14 +42,15 @@ deploy:
 mint:
 	@forge script script/Interactions.s.sol:MintBasicNft ${NETWORK_ARGS}
 
-# deployMood:
-# 	@forge script script/DeployMoodNft.s.sol:DeployMoodNft $(NETWORK_ARGS)
+deployMood:
+	@forge script script/DeployMoodNft.s.sol:DeployMoodNft $(NETWORK_ARGS)
 
-# mintMoodNft:
-# 	@forge script script/Interactions.s.sol:MintMoodNft $(NETWORK_ARGS)
+mintMoodNft:
+	@forge script script/Interactions.s.sol:MintMoodNft $(NETWORK_ARGS)
 
-# flipMoodNft:
+flipMoodNft:
+	cast send 0x5FbDB2315678afecb367f032d93F642f64180aa3 "minftNft()"
 # 	@forge script script/Interactions.s.sol:FlipMoodNft $(NETWORK_ARGS)
 
-# zkdeploy: 
-# 	@forge create src/OurToken.sol:OurToken --rpc-url http://127.0.0.1:8011 --private-key $(DEFAULT_ZKSYNC_LOCAL_KEY) --legacy --zksync
+zkdeploy: 
+	@forge create src/OurToken.sol:OurToken --rpc-url http://127.0.0.1:8011 --private-key $(DEFAULT_ZKSYNC_LOCAL_KEY) --legacy --zksync
