@@ -35,7 +35,7 @@ contract MoodNftIntegrationTest is Test {
         moodNft.mintNft();
 
         vm.prank(USER);
-        moodNft.flipMood();
+        moodNft.flipMood(0);
 
         assert(
             keccak256(abi.encodePacked(moodNft.tokenURI(0))) ==
