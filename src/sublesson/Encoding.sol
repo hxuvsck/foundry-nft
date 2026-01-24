@@ -8,5 +8,5 @@ pragma solidity ^0.8.19;
  */
 
 contract Encoding {
-
+    function encodeAbi() public returns (string memory) {}
 }
