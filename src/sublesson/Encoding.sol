@@ -8,5 +8,9 @@ pragma solidity ^0.8.19;
  */
 
 contract Encoding {
-    function encodeAbi() public returns (string memory) {}
+    // function encodeAbi() public returns (string memory) {}
+    function combineStrings() public pure returns (string memory) {
+        // In Solidity, there is whole bunch of cheatsheets. And one of it is "abi.encodePacked()". When deployed this function and pushing the button on Remix IDE, it shows the string where we implied and VM was Javascript which is encoding those two in bytes form. And we are type casting it using string() in front of it.
+        return string(abi.encodePacked("Hi, Mom!", "Miss you!"));
+    }
 }
